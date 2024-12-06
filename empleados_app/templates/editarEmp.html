@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block cuerpo %}
+<br>
+<div class='row'><!--fila-->
+    <div class="col-md-4 offset-md-4"><!--columna 1-->      
+        <H4>Editar</H4>
+        <div class="card">
+            <div class="card-body">
+                <form action="/editar_Empleado/" method="POST"> {% csrf_token %}
+                    <div class="form-group">
+                        <input type="number" id="txtid" name="txtid" class="form-control"
+                        value="{{mEmpleados.id_empleado}}" minlength="5" maxlength="5"  readonly required>
+                    </div>
+                    <div class="form-group py-3" >
+                        <input type="text" id="txtnom" name="txtnom" class="form-control"
+                        value="{{mEmpleados.nombre}}" maxlength="100" required>
+                    </div>
+                    <div class="form-group ">
+                        <input type="text" id="ape" name="ape" class="form-control"
+                        value="{{mEmpleados.apellido}}" maxlength="250">
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="number" id="num" name="num" class="form-control"
+                        value="{{mEmpleados.telefono}}" maxlength="250">
+                    </div>
+                    <div class="form-group ">
+                        <input type="floatformat" id="sue" name="sue" class="form-control"
+                        value="{{mEmpleados.salario}}" maxlength="50">
+                    </div>
+
+                    <div class="form-group py-3">
+                        <input type="text" id="gen" name="gen" class="form-control"
+                        value="{{mEmpleados.genero}}" required>
+                    </div>
+                    <div class="form-group ">
+                        <input type="text" id="pue" name="pue" class="form-control"
+                        value="{{mEmpleados.puesto}}" maxlength="50">
+                    </div>
+                    <div class="form-group py-3">
+                        <button type="submit" class="btn btn-success">Guardar</button>
+                    </div><!--FROMULARIO-->
+                </form>
+                <!--This is some text within a card body.-->
+            </div>
+        </div><!--tarjeta-->
+    </div>
+<!--{{mEmpleados.id_emple}}-->
+{% endblock %}
