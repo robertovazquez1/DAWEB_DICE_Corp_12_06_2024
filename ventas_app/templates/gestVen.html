@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% load static %}
+{% block cuerpo %}
+<div class='row'><!--fila-->
+    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4"><!--columna 1-->      
+        <H4>Registrar</H4>
+        <div class="card">
+            <div class="card-body">
+                <form action="/registar_Ventas/" method="POST"> {% csrf_token %}
+                    <div class="form-group">
+                        <input type="number" id="txtid" name="txtid" class="form-control"
+                        placeholder="Codigo Venta" minlength="5" maxlength="5" required>
+                    </div>
+                    <div class="form-group  py-3">
+                        <input type="number" id="ide" name="ide" class="form-control"
+                        placeholder="Codigo empleado" required>
+                    </div>
+                    <div class="form-group ">
+                        <input type="number" id="idc" name="idc" class="form-control"
+                        placeholder="Codigo cliente" maxlength="250">
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="number" id="ida" name="ida" class="form-control"
+                        placeholder="Codigo articulo" maxlength="250">
+                    </div>
+                    <div class="form-group" >
+                        <input type="number" id="idl" name="idl" class="form-control"
+                        placeholder="Codigo local" maxlength="100" required>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="number" id="cac" name="cac" class="form-control"
+                        placeholder="Cantidad" maxlength="10">
+                    </div>
+                    <div class="form-group ">
+                        <input type="text" id="mp" name="mp" class="form-control"
+                        placeholder="metodo_pago" maxlength="50">
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="floatformat" id="tot" name="tot" class="form-control"
+                        placeholder="Precio Total" maxlength="250">
+                    </div>
+                    <div class="form-group ">
+                        <button type="submit" class="btn btn-success">Guardar</button>
+                    </div><!--FROMULARIO-->
+                </form>
+                <!--This is some text within a card body.-->
+            </div>
+        </div><!--tarjeta-->
+    </div>
+    <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8"><!--columna 2-->
+        <h4>List Venta</h4>
+        <img class="w-40" src="{% static 'ventas.png' %}" alt="" width="250" height="250">
+        <br>
+        <br>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">cantidad</th>
+                        <th scope="col">Instrumento</th>
+                        <th scope="col">precio_tot</th>
+                        <th scope="col">id_cliente</th>
+                        <th sence="col">id_sucursal</th>
+                        <th scope="col">id_empleado</th>
+                        <th colspan="2">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for m in lamp %}
+                        <tr>
+                            <td>{{forloop.counter}}</td>
+                            <td>{{m.id_venta}}</td>
+                            <td>{{m.id_empleado}}</td>
+                            <td>{{m.id_cliente}}</td>
+                            <td>{{m.id_articulo}}</td>
+                            <td>{{m.id_local}}</td>
+                            <td>{{m.cantidad_compra}}</td>
+                            <td>{{m.metodo_pago}}</td>
+                            <td>{{m.total}}</td>
+                            <td><a href="/seleccionar_Ventas/{{m.id_venta}}" class="btn btn-info">Editar</a></td>
+                            <td><a href="/borrar_Ventas/{{m.id_venta}}" class="btn btn-danger">Borrar</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock cuerpo %}

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block cuerpo %}
+<br>
+<div class='row'><!--fila-->
+    <div class="col-md-4 offset-md-4"><!--columna 1-->      
+        <H4>Editar</H4>
+        <div class="card">
+            <div class="card-body">
+                <form action="/editar_Ventas/" method="POST"> {% csrf_token %}
+                    <div class="form-group">
+                        <input type="number" id="txtid" name="txtid" class="form-control"
+                        value="{{mVentas.id_venta}}" minlength="5" maxlength="5"  readonly required>
+                    </div>
+                    <div class="form-group py-3" >
+                        <input type="number" id="ide" name="ide" class="form-control"
+                        value="{{mVentas.id_empleado}}" maxlength="100" required>
+                    </div>
+                    <div class="form-group ">
+                        <input type="number" id="idc" name="idc" class="form-control"
+                        value="{{mVentas.id_cliente}}" maxlength="250">
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="number" id="ida" name="ida" class="form-control"
+                        value="{{mVentas.id_articulo}}" maxlength="250">
+                    </div>
+                    <div class="form-group ">
+                        <input type="number" id="idl" name="idl" class="form-control"
+                        value="{{mVentas.id_local}}" maxlength="10">
+                    </div>
+
+                    <div class="form-group py-3">
+                        <input type="number" id="cac" name="cac" class="form-control"
+                        value="{{mVentas.cantidad_compra}}" maxlength="250" required>
+                    </div>
+                    <div class="form-group ">
+                        <input type="text" id="mp" name="mp" class="form-control"
+                        value="{{mVentas.metodo_pago}}" maxlength="250">
+                    </div>
+                    <div class="form-group ">
+                        <input type="floatformat" id="tot" name="tot" class="form-control"
+                        value="{{mVentas.total}}" maxlength="250">
+                    </div>
+                    <div class="form-group py-3">
+                        <button type="submit" class="btn btn-success">Guardar</button>
+                    </div><!--FROMULARIO-->
+                </form>
+                <!--This is some text within a card body.-->
+            </div>
+        </div><!--tarjeta-->
+    </div>
+<!--{{mVentas.id_emple}}-->
+{% endblock %}
