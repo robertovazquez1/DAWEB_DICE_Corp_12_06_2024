@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block cuerpo %}
+<br>
+<div class='row'><!--fila-->
+    <div class="col-md-4 offset-md-4"><!--columna 1-->      
+        <H4>Editar</H4>
+        <div class="card">
+            <div class="card-body">
+                <form action="/editar_local/" method="POST"> {% csrf_token %}
+                    <div class="form-group">
+                        <input type="number" id="txtid" name="txtid" class="form-control"
+                        value="{{mLocals.id_local}}" minlength="5" maxlength="5"  readonly required>
+                    </div>
+                    <div class="form-group py-3" >
+                        <input type="text" id="ubi" name="ubi" class="form-control"
+                        value="{{mLocals.ubicacion}}" maxlength="100" required>
+                    </div>
+                    <div class="form-group ">
+                        <input type="number" id="afu" name="afu" class="form-control"
+                        value="{{mLocals.anos_funcio}}" maxlength="250">
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="text" id="hor" name="hor" class="form-control"
+                        value="{{mLocals.horario}}" maxlength="250">
+                    </div>
+                    <div class="form-group ">
+                        <input type="text" id="tam" name="tam" class="form-control"
+                        value="{{mLocals.tamano}}" maxlength="10">
+                    </div>
+
+                    <div class="form-group py-3">
+                        <input type="text" id="due" name="due" class="form-control"
+                        value="{{mLocals.dueno}}" maxlength="250" required>
+                    </div>
+                    <div class="form-group ">
+                        <input type="number" id="emp" name="emp" class="form-control"
+                        value="{{mLocals.empleados_total}}" maxlength="250">
+                    </div>
+                    <div class="form-group py-3">
+                        <button type="submit" class="btn btn-success">Guardar</button>
+                    </div><!--FROMULARIO-->
+                </form>
+                <!--This is some text within a card body.-->
+            </div>
+        </div><!--tarjeta-->
+    </div>
+<!--{{mLocals.id_emple}}-->
+{% endblock %}

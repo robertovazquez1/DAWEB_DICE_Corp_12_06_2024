@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% load static %}
+{% block cuerpo %}
+<div class='row'><!--fila-->
+    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4"><!--columna 1-->      
+        <H4>Registrar</H4>
+        <div class="card">
+            <div class="card-body">
+                <form action="/registrar_Local/" method="POST"> {% csrf_token %}
+                    <div class="form-group">
+                        <input type="number" id="txtid" name="txtid" class="form-control"
+                        placeholder="Codigo Local" minlength="5" maxlength="5" required>
+                    </div>
+                    <div class="form-group py-3" >
+                        <input type="text" id="ubi" name="ubi" class="form-control"
+                        placeholder="Ubicacion" maxlength="250" required>
+                    </div>
+                    <div class="form-group ">
+                        <input type="number" id="afu" name="afu" class="form-control"
+                        placeholder="Años funcionando" maxlength="10">
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="text" id="hor" name="hor" class="form-control"
+                        placeholder="Horario" maxlength="50">
+                    </div>
+                    <div class="form-group ">
+                        <input type="text" id="tam" name="tam" class="form-control"
+                        placeholder="Tamaño" maxlength="250">
+                    </div>
+                    <div class="form-group  py-3">
+                        <input type="text" id="due" name="due" class="form-control"
+                        placeholder="Dueño" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" id="emp" name="emp" class="form-control"
+                        placeholder="Empleados totales" maxlength="250">
+                    </div>
+                    
+                    
+                    <div class="form-group py-3">
+                        <button type="submit" class="btn btn-success">Guardar</button>
+                    </div><!--FROMULARIO-->
+                </form>
+                <!--This is some text within a card body.-->
+            </div>
+        </div><!--tarjeta-->
+    </div>
+    <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8"><!--columna 2-->
+        <h4>List Local</h4>
+        <img class="w-40" src="{% static 'local.png' %}" alt="" width="250" height="250">
+        <br>
+        <br>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Direccion</th>
+                        <th scope="col">Espacio</th>
+                        <th scope="col">Instrumento</th>
+                        <th sence="col">Cantidad</th>
+                        <th scope="col">Encargado</th>
+                        <th colspan="2">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for m in lamp %}
+                        <tr>
+                            <td>{{forloop.counter}}</td>
+                            <td>{{m.id_local}}</td>
+                            <td>{{m.ubicacion}}</td>
+                            <td>{{m.anos_funcio}}</td>
+                            <td>{{m.horario}}</td>
+                            <td>{{m.tamano}}</td>
+                            <td>{{m.dueno}}</td>
+                            <td>{{m.empleados_total}}</td>
+                            <td><a href="/seleccionar_Local/{{m.id_local}}" class="btn btn-info">Editar</a></td>
+                            <td><a href="/borrar_local/{{m.id_local }}" class="btn btn-danger">Borrar</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock cuerpo %}
