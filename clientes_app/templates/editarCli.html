@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block cuerpo %}
+<br>
+<div class='row'><!--fila-->
+    <div class="col-md-4 offset-md-4"><!--columna 1-->      
+        <H4>Editar</H4>
+        <div class="card">
+            <div class="card-body">
+                <form action="/editar_Clientes/" method="POST"> {% csrf_token %}
+                    <div class="form-group">
+                        <input type="number" id="txtid" name="txtid" class="form-control"
+                        value="{{mclientes.id_cliente}}" minlength="5" maxlength="5" readonly required>
+                    </div>
+                    <div class="form-group py-3" >
+                        <input type="date" id="fecen" name="fecen" class="form-control"
+                        value="{{mclientes.fecha_entrada}}" maxlength="100" required>
+                    </div>
+                    <div class="form-group ">
+                        <input type="time" id="tiempo" name="tiempo" class="form-control"
+                        value="{{mclientes.tiempo_local}}" required>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="text" id="com" name="com" class="form-control"
+                        value="{{mclientes.compra}}" maxlength="2">
+                    </div>
+                    <div class="form-group ">
+                        <input type="text" id="idm" name="idm" class="form-control"
+                        value="{{mclientes.id_membresia}}" required>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="text" id="mecom" name="mecom" class="form-control"
+                        value="{{mclientes.metodo_pago}}" maxlength="250">
+                    </div>
+                    <div class="form-group ">
+                        <input type="text" id="cali" name="cali" class="form-control"
+                        value="{{mclientes.calificacion_dada}}" maxlength="250">
+                    </div>
+                    <div class="form-group ">
+                        <button type="submit" class="btn btn-success">Guardar</button>
+                    </div><!--FROMULARIO-->
+                </form>
+                <!--This is some text within a card body.-->
+            </div>
+        </div><!--tarjeta-->
+    </div>
+{% endblock %}
